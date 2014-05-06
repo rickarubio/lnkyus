@@ -1,2 +1,10 @@
 <h1 id="site-title">Welcome to lnky.us!</h1>
-<input type="url" name="long-url" id="long-url">
+
+<%= form_for @url do |f| %>
+  <%= f.text_field :address %>
+  <%= f.submit "Shorten URL" %>
+<% end %>
+
+<% flash.each do |name, msg| %>
+      <p class="notice"><%= msg %></div>
+<% end %>
