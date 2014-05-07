@@ -30,14 +30,17 @@ group :test do
   gem 'capybara'
 end
 
-group :production do
+group :production, :development do
   gem 'rails_12factor'
+end
+
+group :production, :development do
+  # To use ActiveModel has_secure_password
+  gem 'bcrypt-ruby', '~> 3.0.0'
 end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.5'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
