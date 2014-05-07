@@ -3,6 +3,15 @@ class Url < ActiveRecord::Base
   validates :address, presence: true, format: { with: /[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix }
   validates :short, presence: true, uniqueness: true
   before_validation :generate_short_url
+  before_save :valid_url
+
+  private
+
+  def valid_url
+    unless self.address.match(/^(http:\/\/)|^(https:\/\/)/i)
+      self.address = "http://" + self.address
+    end
+  end
 
   def generate_short_url
     base62 = ('0'..'9').to_a.push(('a'..'z').to_a).push(('A'..'Z').to_a).flatten
