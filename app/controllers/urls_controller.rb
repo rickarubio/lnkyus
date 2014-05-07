@@ -6,9 +6,9 @@ class UrlsController < ApplicationController
   end
 
   def create
-    @short_url = Url.new params[:url]
-    if @short_url.save
-      flash[:notice] = "url saved to db"
+    @url = Url.new params[:url]
+    if @url.save
+      session[:url_id] = @url.id
       redirect_to root_url
     else
       flash[:failed] = "url failed to save to db"
