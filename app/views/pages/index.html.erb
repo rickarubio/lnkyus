@@ -7,7 +7,7 @@
 
 <% if session[:url_id] %>
   <% @short = Url.find(session[:url_id]).short %>
-  <p>Your short url is: <a href=<%= "lnky.us/#{@short}" %>><%= "lnky.us/#{@short}" %></a></p>
+  <p>Your short url is: <a href=<%= "/#{@short}" %>><%= "lnky.us/#{@short}" %></a></p>
 <% end %>
 
 <% flash.each do |name, msg| %>

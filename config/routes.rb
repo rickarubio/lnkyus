@@ -1,5 +1,6 @@
 Lnkyus::Application.routes.draw do
   root :to => "pages#index"
+  get '/:short', to: "urls#redirect"
   resources :urls
 
   # The priority is based upon order of creation:

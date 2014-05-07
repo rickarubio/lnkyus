@@ -27,4 +27,14 @@ class UrlsController < ApplicationController
 
   def destroy
   end
+
+  def redirect
+    @url = Url.where(:short => params[:short])
+    if @url.empty?
+      flash[:failed] = "you are trying to go to a url that doesn't exist!"
+      redirect_to '/'
+    else
+      redirect_to @url.first.address
+    end
+  end
 end
