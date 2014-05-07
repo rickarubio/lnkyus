@@ -34,7 +34,7 @@ group :production, :development do
   gem 'rails_12factor'
 end
 
-group :production, :development do
+group :production, :development, :test do
   # To use ActiveModel has_secure_password
   gem 'bcrypt-ruby', '~> 3.0.0'
 end
